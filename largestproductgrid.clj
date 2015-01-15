@@ -1,11 +1,3 @@
-;(def vect '[[1 2 3 4 4 5 1]
-            ;[3 4 6 0 0 9 4]
-            ;[3 4 6 0 0 9 4]
-            ;[1 2 3 4 4 5 1]
-            ;[3 4 6 0 0 9 4]
-            ;[1 2 3 4 4 5 1]
-            ;[7 4 9 8 1 7 2]])
-
 (def vect '[
             [ 8  2 22 97 38 15  0 40  0 75  4  5  7 78 52 12 50 77 91  8]
             [49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48  4 56 62  0]
@@ -27,7 +19,6 @@
             [20 69 36 41 72 30 23 88 34 62 99 69 82 67 59 85 74  4 36 16]
             [20 73 35 29 78 31 90  1 74 31 49 71 48 86 81 16 23 57  5 54]
             [ 1 70 54 71 83 51 54 69 16 92 33 48 61 43 52  1 89 19 67 48]])
-
 
 (defn vertical [vect size]
     (loop [x 0 final-list ()]
@@ -86,19 +77,6 @@
           (recur (inc x) (conj final-list local-max)))
     final-list)))
 
-;(defn side [vect]
-  ;(loop [x 0]
-    ;(when (< x 3)
-      ;(loop [y 0]
-        ;(when (< y 7)
-        ;(print (nth (nth vect y) x))
-        ;(print (nth (nth vect y) (+ x 1)))
-        ;(print (nth (nth vect y) (+ x 2)))
-        ;(println (nth (nth vect y) (+ x 3)))
-        ;(recur (inc y))))
-      ;(println)
-      ;(recur (inc x)))))
-
 (defn side [vect size]
     (loop [x 0 final-list ()]
       (if (< x 4)
@@ -119,7 +97,6 @@
         final-list
         )))
 
-
 (defn maxproduct [vect size]
   (apply max
          (list
@@ -128,8 +105,4 @@
                (apply max (forward vect size))
                (apply max (vertical vect size)))))
 
-;(println (apply max (vertical vect 7)))
-;(println (apply max (forward vect 7)))
-;(println (apply max (backward vect 7)))
-;(println (apply max (side vect 7)))
-(println (maxproduct vect 20))
+(time (maxproduct vect 20))
