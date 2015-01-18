@@ -1,4 +1,3 @@
-
 (def tree
   '((75)
   (95 64)
@@ -24,7 +23,6 @@
     ;[8 5 9 3]])
 
 (defn walk [tree level index tally]
-  (println (nth (nth tree level) index) tally)
   (if (= (count tree) (inc level))
     (+ (nth (nth tree 0) 0) tally)
     (do
@@ -32,6 +30,7 @@
       (list (walk tree (inc level) (inc index) (+ (nth (nth tree (inc level)) (inc index)) tally))))
       )))
 
+;(time (walk tree 0 0 0))
 (println (apply max (flatten (walk tree 0 0 0))))
 
 
